@@ -1,2 +1,5 @@
-My first todo App
-Stack: ReactJS, Sass
+#My first todo App
+
+#Stack: 
+1. ReactJS
+2. Sass
