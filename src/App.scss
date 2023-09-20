@@ -76,6 +76,22 @@
 
 .categories-content {
   margin-top: 20px;
+  max-width: 200px;
+  max-height: 200px;
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: yellow;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: black;
+  }
 
   li {
     input {
@@ -86,6 +102,7 @@
       cursor: pointer;
       margin: 4px;
     }
+
     display: flex;
     align-items: center;
     list-style: none;

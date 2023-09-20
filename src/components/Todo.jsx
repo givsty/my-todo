@@ -17,7 +17,7 @@ const Todo = () => {
   const task = e => setTodos(todos.concat([{ name: e.target.value , completed: false}]));
 
   const addTask = (e) => {
-    if (e.key === "Enter" && e.target.value !== "" && todos.length !== 8 && e.target.value !== 0) {
+    if (e.key === "Enter" && e.target.value !== "" /*&& todos.length !== 8*/ && e.target.value !== 0) {
       task(e)
     }
   };
@@ -25,7 +25,7 @@ const Todo = () => {
   const setActive = (event) => {
     event.active = true;
   };
-н
+
   return (
     <div className="wrapper">
       <div className="content">
