@@ -25,7 +25,7 @@ const Todo = () => {
   const setActive = (event) => {
     event.active = true;
   };
-
+н
   return (
     <div className="wrapper">
       <div className="content">
