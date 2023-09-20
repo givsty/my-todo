@@ -72,6 +72,11 @@
 .send {
   margin-left: 15px;
   cursor: pointer;
+  border-radius: 5px;
+
+  &:hover {
+    color: #adb5bd;
+  }
 }
 
 .categories-content {
@@ -86,7 +91,8 @@
   }
 
   &::-webkit-scrollbar-track {
-    background: yellow;
+    background: rgb(255, 255, 255);
+    background: linear-gradient(90deg, rgba(255, 255, 255, 1) 40%, rgba(103, 94, 94, 0.6895133053221288) 50%, rgba(103, 94, 94, 0.6895133053221288) 60%, rgba(255, 255, 255, 1) 60%);
   }
 
   &::-webkit-scrollbar-thumb {
