@@ -17,7 +17,7 @@ const Todo = () => {
   const task = e => setTodos(todos.concat([{ name: e.target.value , completed: false}]));
 
   const addTask = (e) => {
-    if (e.key === "Enter" && e.target.value !== "" /*&& todos.length !== 8*/ && e.target.value !== 0) {
+    if (e.key === "Enter" && e.target.value !== "" && e.target.value !== '') {
       task(e)
     }
   };
@@ -47,7 +47,7 @@ const Todo = () => {
               value={todos.name}
             />
             <button className="send" onClick={(e) => {
-              if(todos.length !== 8 && e.target.value !== 0) {
+              if(todos.length !== 8 && e.target.value !== '') {
                 setTodos(todos.concat([{ name: input }]))
               }
             }}>
