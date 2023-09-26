@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import del from '../assets/img/delete.png';
-
+import Input from '../components/Input'
 const Todo = () => {
   const categories = [
     "Favourites",
@@ -32,7 +32,7 @@ const Todo = () => {
       return todo
     }))
   };
-  console.log(todos);
+
   return (
     <div className="wrapper">
       <div className="content">
@@ -46,21 +46,12 @@ const Todo = () => {
           <div className="line"></div>
           <div className="categories-header">
             <h2>All Task</h2>
-            <input
-              type="text"
-              onChange={(e) => setInput(e.target.value)}
-              onKeyUpCapture={addTask}
-              placeholder="Add new task"
-              value={input}
+            <Input
+             addTask = {addTask}
+             setInput = {setInput}
+             task = {task}
+             input = {input}
             />
-            <button className="send" onClick={(e) => {
-              if(input) {
-                task(e)
-                setInput('')
-              }
-            }}>
-              Отправить
-            </button>
             <div className="categories-content">
               {todos.map((element) => {
                 return (
