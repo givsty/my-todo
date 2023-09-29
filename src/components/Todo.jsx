@@ -25,9 +25,13 @@ const Todo = () => {
   ]);
 
   const [input, setInput] = useState("");
-  const [category, setCategory] = useState(0)
+  const [category, setCategory] = useState(0);
   const task = () =>
-    setTodos(todos.concat([{ name: input, completed: false, id: Math.floor(Math.random() * 100) }]));
+    setTodos(
+      todos.concat([
+        { name: input, completed: false, id: Math.floor(Math.random() * 100) },
+      ])
+    );
 
   const addTask = (e) => {
     if (e.key === "Enter" && input !== "" && input !== "") {
@@ -37,16 +41,18 @@ const Todo = () => {
   };
 
   const deleteTask = (id) => {
-    setTodos(todos.filter(element => element.id !== id))
+    setTodos(todos.filter((element) => element.id !== id));
   };
 
   const setActive = (id) => {
-    setTodos(todos.filter((element) =>{
-      if(element.id === id) {
-        element.completed = !element.completed
-      }
-      return element
-    }))
+    setTodos(
+      todos.filter((element) => {
+        if (element.id === id) {
+          element.completed = !element.completed;
+        }
+        return todos;
+      })
+    );
   };
 
   return (
@@ -59,7 +65,7 @@ const Todo = () => {
               <li
                 style={{ fontWeight: index === category ? "700" : "" }}
                 key={index}
-                onClick={() =>setCategory(index)}
+                onClick={() => setCategory(index)}
               >
                 {element}
               </li>
@@ -79,7 +85,7 @@ const Todo = () => {
                 return (
                   <li
                     style={{
-                      textDecoration: element.active ? "line-through" : "",
+                      textDecoration: element.completed ? "line-through" : "",
                     }}
                   >
                     <input
@@ -87,7 +93,11 @@ const Todo = () => {
                       onClick={() => setActive(element.id)}
                     />
                     {element.name}
-                    <img onClick={() => deleteTask(element.id)}src={del} alt="" />
+                    <img
+                      onClick={() => deleteTask(element.id)}
+                      src={del}
+                      alt=""
+                    />
                   </li>
                 );
               })}
