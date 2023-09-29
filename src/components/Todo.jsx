@@ -17,12 +17,17 @@ const Todo = () => {
       completed: false,
       id: Math.floor(Math.random() * 100),
     },
+    {
+      name: "Построить дом",
+      completed: false,
+      id: Math.floor(Math.random() * 100),
+    },
   ]);
 
   const [input, setInput] = useState("");
   const [category, setCategory] = useState(0)
   const task = () =>
-    setTodos(todos.concat([{ name: input, completed: false }]));
+    setTodos(todos.concat([{ name: input, completed: false, id: Math.floor(Math.random() * 100) }]));
 
   const addTask = (e) => {
     if (e.key === "Enter" && input !== "" && input !== "") {
@@ -30,18 +35,18 @@ const Todo = () => {
       setInput("");
     }
   };
-  const deleteTask = () => {
-    return "";
+
+  const deleteTask = (id) => {
+    setTodos(todos.filter(element => element.id !== id))
   };
+
   const setActive = (id) => {
-    setTodos(
-      todos.filter((todo) => {
-        if (todo.id === id) {
-          todo.completed = true;
-        }
-        return todo;
-      })
-    );
+    setTodos(todos.filter((element) =>{
+      if(element.id === id) {
+        element.completed = !element.completed
+      }
+      return element
+    }))
   };
 
   return (
@@ -82,7 +87,7 @@ const Todo = () => {
                       onClick={() => setActive(element.id)}
                     />
                     {element.name}
-                    <img src={del} alt="" />
+                    <img onClick={() => deleteTask(element.id)}src={del} alt="" />
                   </li>
                 );
               })}
