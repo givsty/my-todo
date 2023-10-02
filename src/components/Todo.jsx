@@ -3,6 +3,7 @@ import del from "../assets/img/delete.png";
 import Input from "../components/Input";
 const Todo = () => {
   const categories = [
+    "All Task",
     "Favourites",
     "Groceries",
     "Work",
@@ -60,7 +61,6 @@ const Todo = () => {
       <div className="content">
         <div className="categories">
           <ul className="cagegories-list">
-            <li className="first">All Tasks</li>
             {categories.map((element, index) => (
               <li
                 style={{ fontWeight: index === category ? "700" : "" }}
