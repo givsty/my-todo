@@ -11,6 +11,7 @@ const Todo = () => {
     "Sports",
     "+New category",
   ];
+  const [onCategory, setOnCategory] = useState()
 
   const [todos, setTodos] = useState([
     {
@@ -65,7 +66,10 @@ const Todo = () => {
               <li
                 style={{ fontWeight: index === category ? "700" : "" }}
                 key={index}
-                onClick={() => setCategory(index)}
+                onClick={() => {
+                  setCategory(index)
+                  setOnCategory(element)
+                }}
               >
                 {element}
               </li>
@@ -73,7 +77,7 @@ const Todo = () => {
           </ul>
           <div className="line"></div>
           <div className="categories-header">
-            <h2>All Task</h2>
+            <h2>{onCategory ? onCategory: 'All Task'}</h2>
             <Input
               addTask={addTask}
               setInput={setInput}
