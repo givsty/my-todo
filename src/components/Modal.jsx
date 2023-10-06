@@ -1,4 +1,5 @@
 import React from 'react'
+import del from "../assets/img/delete.png";
 
 const Modal = ({toggle, setToggle}) => {
   return (
@@ -7,7 +8,7 @@ const Modal = ({toggle, setToggle}) => {
       <div class="modal-body">
         <div class="modal-header">
           <h3>Add new Category</h3>
-          <div class="modal-close" onClick={() => setToggle(!toggle)}>X</div>
+          <img className="modal-close" src={del} onClick={() => setToggle(!toggle)}/> 
         </div>
         <div class="modal-body__content">
           <input className="modal__input" />
