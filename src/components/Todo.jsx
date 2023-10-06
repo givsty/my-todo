@@ -1,6 +1,8 @@
 import React, { useState } from "react";
-import del from "../assets/img/delete.png";
 import Input from "../components/Input";
+import Categories from "./Categories";
+import Tasks from "./Tasks";
+
 const Todo = () => {
   const categories = [
     "All Task",
@@ -11,23 +13,10 @@ const Todo = () => {
     "Sports",
     "+New category",
   ];
-  const [onCategory, setOnCategory] = useState()
-
-  const [todos, setTodos] = useState([
-    {
-      name: "Построить беседку",
-      completed: false,
-      id: Math.floor(Math.random() * 100),
-    },
-    {
-      name: "Построить дом",
-      completed: false,
-      id: Math.floor(Math.random() * 100),
-    },
-  ]);
-
-  const [input, setInput] = useState("");
+  const [todos, setTodos] = useState([]);
   const [category, setCategory] = useState(0);
+  const [onCategory, setOnCategory] = useState(0)
+  const [input, setInput] = useState("");
   const task = () =>
     setTodos(
       todos.concat([
@@ -42,37 +31,18 @@ const Todo = () => {
     }
   };
 
-  const deleteTask = (id) => {
-    setTodos(todos.filter((element) => element.id !== id));
-  };
-
-  const setActive = (id) => {
-    setTodos(
-      todos.filter((element) => {
-        if (element.id === id) {
-          element.completed = !element.completed;
-        }
-        return todos;
-      })
-    );
-  };
-
   return (
     <div className="wrapper">
       <div className="content">
         <div className="categories">
           <ul className="cagegories-list">
             {categories.map((element, index) => (
-              <li
-                style={{ fontWeight: index === category ? "700" : "" }}
-                key={index}
-                onClick={() => {
-                  setCategory(index)
-                  setOnCategory(element)
-                }}
-              >
-                {element}
-              </li>
+              <Categories element={element}
+              index={index}
+              setOnCategory={setOnCategory}
+              setCategory={setCategory}
+              category={category}
+              />
             ))}
           </ul>
           <div className="line"></div>
@@ -85,24 +55,14 @@ const Todo = () => {
               input={input}
             />
             <div className="categories-content">
-              {todos.map((element) => {
+              {todos.map((element, index) => {
                 return (
-                  <li
-                    style={{
-                      textDecoration: element.completed ? "line-through" : "",
-                    }}
-                  >
-                    <input
-                      type="checkbox"
-                      onClick={() => setActive(element.id)}
-                    />
-                    {element.name}
-                    <img
-                      onClick={() => deleteTask(element.id)}
-                      src={del}
-                      alt=""
-                    />
-                  </li>
+                  <Tasks
+                  key={index}
+                  element={element}
+                  todos={todos}
+                  setTodos={setTodos}
+                  />
                 );
               })}
             </div>
