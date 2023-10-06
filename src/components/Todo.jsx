@@ -2,19 +2,20 @@ import React, { useState } from "react";
 import Input from "../components/Input";
 import Categories from "./Categories";
 import Tasks from "./Tasks";
-import categories from './Categories'
-const Todo = () => {
-  // const categories = [
-  //   "Favourites",
-  //   "Groceries",
-  //   "Work",
-  //   "Study",
-  //   "Sports",
-  //   "+New category",
-  // ];
-  console.log(categories);
-  const [todos, setTodos] = useState([]);
 
+const Todo = () => {
+  const categories = [
+    "All Task",
+    "Favourites",
+    "Groceries",
+    "Work",
+    "Study",
+    "Sports",
+    "+New category",
+  ];
+  const [todos, setTodos] = useState([]);
+  const [category, setCategory] = useState(0);
+  const [onCategory, setOnCategory] = useState(0)
   const [input, setInput] = useState("");
   const task = () =>
     setTodos(
@@ -35,16 +36,18 @@ const Todo = () => {
       <div className="content">
         <div className="categories">
           <ul className="cagegories-list">
-            <li className="first">All Tasks</li>
             {categories.map((element, index) => (
               <Categories element={element}
               index={index}
+              setOnCategory={setOnCategory}
+              setCategory={setCategory}
+              category={category}
               />
             ))}
           </ul>
           <div className="line"></div>
           <div className="categories-header">
-            <h2>All Task</h2>
+            <h2>{onCategory ? onCategory: 'All Task'}</h2>
             <Input
               addTask={addTask}
               setInput={setInput}

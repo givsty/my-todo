@@ -1,20 +1,14 @@
-import React, { useState } from "react";
+import React from "react";
 
-const Categories = ({element,index}) => {
-  const [category, setCategory] = useState(0);
-  const categories = [
-    "Favourites",
-    "Groceries",
-    "Work",
-    "Study",
-    "Sports",
-    "+New category",
-  ];
+const Categories = ({element,index, setOnCategory, category, setCategory}) => {
   return (
     <li
       style={{ fontWeight: index === category ? "700" : "" }}
       key={index}
-      onClick={() => setCategory(index)}
+      onClick={() => {
+        setCategory(index)
+        setOnCategory(element)
+      }}
     >
       {element}
     </li>
