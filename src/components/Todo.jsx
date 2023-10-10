@@ -5,19 +5,19 @@ import Tasks from "./Tasks";
 import Modal from "./Modal";
 
 const Todo = () => {
-  const categories = [
-    "All Task",
-    "Favourites",
-    "Groceries",
-    "Work",
-    "Study",
-    "Sports"
-  ];
-  const [toggle, setToggle] = useState(0)
+  const [toggle, setToggle] = useState(0);
+  const [categories, setCategories] = useState([
+    { name: "All Task", id: Math.floor(Math.random() * 100) },
+    { name: "Favourites", id: Math.floor(Math.random() * 100) },
+    { name: "Groceries", id: Math.floor(Math.random() * 100) },
+    { name: "Work", id: Math.floor(Math.random() * 100) },
+    { name: "Study", id: Math.floor(Math.random() * 100) },
+    { name: "Sports", id: Math.floor(Math.random() * 100) },
+  ]);
   // const [activeModal, setActiveModal] = useState(0)
   const [todos, setTodos] = useState([]);
   const [category, setCategory] = useState(0);
-  const [onCategory, setOnCategory] = useState(0)
+  const [onCategory, setOnCategory] = useState(0);
   const [input, setInput] = useState("");
   const task = () =>
     setTodos(
@@ -25,7 +25,7 @@ const Todo = () => {
         { name: input, completed: false, id: Math.floor(Math.random() * 100) },
       ])
     );
-
+    
   const addTask = (e) => {
     if (e.key === "Enter" && input !== "" && input !== "") {
       task(e);
@@ -36,24 +36,36 @@ const Todo = () => {
   return (
     <div className="wrapper">
       <div className="modal__content">
-        {toggle ? <Modal setToggle={setToggle} toggle={toggle}/> : ''}
+        {toggle ? (
+          <Modal
+            setToggle={setToggle}
+            toggle={toggle}
+            categories={categories}
+            setCategories={setCategories}
+          />
+        ) : (
+          ""
+        )}
       </div>
       <div className="content">
         <div className="categories">
           <ul className="cagegories-list">
             {categories.map((element, index) => (
-              <Categories element={element}
-              index={index}
-              setOnCategory={setOnCategory}
-              setCategory={setCategory}
-              category={category}
+              <Categories
+                element={element.name}
+                index={index}
+                setOnCategory={setOnCategory}
+                setCategory={setCategory}
+                category={category}
               />
             ))}
-            <li style={{color: "gray"}} onClick={()=> setToggle(!toggle)}>+New category</li>
+            <li style={{ color: "gray" }} onClick={() => setToggle(!toggle)}>
+              +New category
+            </li>
           </ul>
           <div className="line"></div>
           <div className="categories-header">
-            <h2>{onCategory ? onCategory: 'All Task'}</h2>
+            <h2>{onCategory ? onCategory : "All Task"}</h2>
             <Input
               addTask={addTask}
               setInput={setInput}
@@ -64,10 +76,10 @@ const Todo = () => {
               {todos.map((element, index) => {
                 return (
                   <Tasks
-                  key={index}
-                  element={element}
-                  todos={todos}
-                  setTodos={setTodos}
+                    key={index}
+                    element={element}
+                    todos={todos}
+                    setTodos={setTodos}
                   />
                 );
               })}

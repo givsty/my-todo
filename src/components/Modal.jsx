@@ -1,23 +1,48 @@
-import React from 'react'
+import React, { useState } from "react";
 import del from "../assets/img/delete.png";
 
-const Modal = ({toggle, setToggle}) => {
+const Modal = ({ toggle, setToggle, categories, setCategories }) => {
+  const [input, setInput] = useState('')
+  const task = () =>
+  setCategories(
+    categories.concat([
+      { name: input, completed: false, id: Math.floor(Math.random() * 100) },
+    ])
+  );
+  const addTask = (e) => {
+    if (e.key === "Enter" && input !== "" && input !== "") {
+      task(e);
+      setInput("");
+    }
+  };
+
   return (
     <div className="modal-window">
       <div class="modal-bg">
-      <div class="modal-body">
-        <div class="modal-header">
-          <h3>Add new Category</h3>
-          <img className="modal-close" src={del} onClick={() => setToggle(!toggle)}/> 
-        </div>
-        <div class="modal-body__content">
-          <input className="modal__input" />
-          <button>Отправить</button>
+        <div class="modal-body">
+          <div class="modal-header">
+            <h3>Add new Category</h3>
+            <img
+              className="modal-close"
+              src={del}
+              onClick={() => setToggle(!toggle)}
+            />
+          </div>
+          <div class="modal-body__content">
+            <input
+              className="modal__input"
+              type="text"
+              onChange={(e) => setInput(e.target.value)}
+              onKeyUpCapture={addTask}
+              placeholder="Add new task"
+              value={input}
+            />
+            <button>Отправить</button>
+          </div>
         </div>
       </div>
     </div>
-    </div>
-  )
-}
+  );
+};
 
-export default Modal
+export default Modal;
