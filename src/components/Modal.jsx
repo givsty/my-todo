@@ -37,7 +37,12 @@ const Modal = ({ toggle, setToggle, categories, setCategories }) => {
               placeholder="Add new task"
               value={input}
             />
-            <button>Отправить</button>
+            <button onClick={(e)=>{
+                if (input) {
+                  task(e);
+                  setInput("");
+                }
+            }}>Отправить</button>
           </div>
         </div>
       </div>

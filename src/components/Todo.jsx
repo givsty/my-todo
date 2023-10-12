@@ -25,7 +25,7 @@ const Todo = () => {
         { name: input, completed: false, id: Math.floor(Math.random() * 100) },
       ])
     );
-    
+ 
   const addTask = (e) => {
     if (e.key === "Enter" && input !== "" && input !== "") {
       task(e);

@@ -6,6 +6,9 @@
   font-family: 'Old Standard TT', serif;
   font-family: 'Raleway', sans-serif;
   font-family: 'Roboto', sans-serif;
+  .element::-webkit-scrollbar {
+    width: 0;
+  }
 }
 
 .wrapper {
@@ -81,12 +84,14 @@
   max-height: 200px;
   overflow-x: hidden;
   overflow-y: auto;
+
   img {
     width: 13px;
     height: 13px;
     cursor: pointer;
     margin-left: 5px;
   }
+
   &::-webkit-scrollbar {
     width: 6px;
   }
@@ -119,25 +124,25 @@
 
 .modal {
   position: fixed;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	background: rgba(0, 0, 0, .6);
-	overflow: auto;
-	z-index: 999;
-	transition: .4s all;
-	opacity: 0;
-	visibility: hidden;
-	cursor: pointer;
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	box-sizing: border-box;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, .6);
+  overflow: auto;
+  z-index: 999;
+  transition: .4s all;
+  opacity: 0;
+  visibility: hidden;
+  cursor: pointer;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 .modal__active {
   opacity: 1;
-	visibility: visible;
+  visibility: visible;
 }
 
 .modal-window {
@@ -152,7 +157,7 @@
 }
 
 .modal-bg {
-  background:rgba(0, 0, 0, .8);
+  background: rgba(0, 0, 0, .8);
   width: 100%;
   height: 100%;
   display: flex;
@@ -176,8 +181,43 @@
   width: 15px;
   height: 15px;
   text-align: center;
+
   :hover {
     color: white;
   }
-  cursor: pointer;  
+
+  cursor: pointer;
+}
+
+.nav__wrapper {
+  width: 100%;
+  height: 80px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+
+  .elements__wrapper {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px;
+    .nav__logo {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      img {
+        width: 50px;
+        height: 50px;
+      }
+
+    }
+    .elements__content {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      li {
+        text-decoration: none;
+        list-style: none;
+        padding: 10px;
+        cursor: pointer;
+      }
+    }
+  }
 }
