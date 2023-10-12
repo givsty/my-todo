@@ -3,7 +3,6 @@ import Input from "../components/Input";
 import Categories from "./Categories";
 import Tasks from "./Tasks";
 import Modal from "./Modal";
-
 const Todo = () => {
   const [toggle, setToggle] = useState(0);
   const [categories, setCategories] = useState([
@@ -57,6 +56,7 @@ const Todo = () => {
                 setOnCategory={setOnCategory}
                 setCategory={setCategory}
                 category={category}
+                key={index}
               />
             ))}
             <li style={{ color: "gray" }} onClick={() => setToggle(!toggle)}>

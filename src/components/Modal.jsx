@@ -18,9 +18,9 @@ const Modal = ({ toggle, setToggle, categories, setCategories }) => {
 
   return (
     <div className="modal-window">
-      <div class="modal-bg">
-        <div class="modal-body">
-          <div class="modal-header">
+      <div className="modal-bg">
+        <div className="modal-body">
+          <div className="modal-header">
             <h3>Add new Category</h3>
             <img
               className="modal-close"

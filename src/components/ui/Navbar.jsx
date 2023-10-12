@@ -1,5 +1,6 @@
 import React from 'react'
 import iconLogo from '../../assets/img/6194029.png'
+import {Link} from 'react-router-dom'
 const Navbar = () => {
   return (
     <div className='nav__wrapper'>
@@ -8,8 +9,8 @@ const Navbar = () => {
           <img src={iconLogo} alt="" />
         </div>
         <ul className='elements__content'>
-          <li>Войти</li>
-          <li>зарегистрироваться</li>
+          <li><Link to="/todo">Войти</Link></li>
+          <li><Link to='/auth'>Зарегистрироваться</Link></li>
         </ul>
       </div>
     </div>
