@@ -2,8 +2,9 @@ import React from "react";
 import "./App.scss";
 import Todo from "./components/Todo";
 import Navbar from "./components/ui/Navbar";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Auth from "./components/Auth";
+
 function App() {
   return (
     <>
