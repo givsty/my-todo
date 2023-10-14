@@ -1,22 +1,28 @@
-import React, { useState } from "react";
+import React, { useState, useEffect} from "react";
 import Input from "../components/Input";
 import Categories from "./Categories";
 import Tasks from "./Tasks";
 import Modal from "./Modal";
 const Todo = () => {
   const [toggle, setToggle] = useState(0);
-  const [categories, setCategories] = useState([
-    { name: "All Task", id: Math.floor(Math.random() * 100) },
-    { name: "Favourites", id: Math.floor(Math.random() * 100) },
-    { name: "Groceries", id: Math.floor(Math.random() * 100) },
-    { name: "Work", id: Math.floor(Math.random() * 100) },
-    { name: "Study", id: Math.floor(Math.random() * 100) },
-    { name: "Sports", id: Math.floor(Math.random() * 100) },
-  ]);
+  const [categories, setCategories] = useState([]);
   const [todos, setTodos] = useState([]);
   const [category, setCategory] = useState(0);
   const [onCategory, setOnCategory] = useState(0);
   const [input, setInput] = useState("");
+  useEffect(() => {
+    fetch("https://652ad3c14791d884f1fd67ca.mockapi.io/Todo")
+      .then(res => res.json())
+      .then(
+        (result) => {
+          setCategories(result)
+        },
+        (error) => {
+          console.log(error)
+        }
+      )
+  }, [])
+  console.log(categories);
   const task = () =>
     setTodos(
       todos.concat([
