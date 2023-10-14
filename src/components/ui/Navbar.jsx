@@ -6,7 +6,7 @@ const Navbar = () => {
     <div className='nav__wrapper'>
       <div className="elements__wrapper">
         <div className="nav__logo">
-          <img src={iconLogo} alt="" />
+          <li><Link to="/my-todo"><img src={iconLogo} alt="" /></Link></li>
         </div>
         <ul className='elements__content'>
           <li><Link to="/auth">Войти</Link></li>

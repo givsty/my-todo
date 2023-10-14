@@ -202,6 +202,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      list-style: none;
       img {
         width: 50px;
         height: 50px;
@@ -270,3 +271,17 @@
   }
 }
 
+.welcome__wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+
+  .welcome__content {
+    .welcome__content__wrapper {
+
+      margin-top: 15px;
+
+    }
+  }
+}
