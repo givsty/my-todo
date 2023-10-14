@@ -13,7 +13,6 @@ const Todo = () => {
     { name: "Study", id: Math.floor(Math.random() * 100) },
     { name: "Sports", id: Math.floor(Math.random() * 100) },
   ]);
-  // const [activeModal, setActiveModal] = useState(0)
   const [todos, setTodos] = useState([]);
   const [category, setCategory] = useState(0);
   const [onCategory, setOnCategory] = useState(0);

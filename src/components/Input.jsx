@@ -7,7 +7,7 @@ const Input = ({addTask , setInput, task, input}) => {
         type="text"
         onChange={(e) => setInput(e.target.value)}
         onKeyUpCapture={addTask}
-        placeholder="Add new task"
+        placeholder="Добавить задачу"
         value={input}
       />
       <button

@@ -9,8 +9,8 @@ const Navbar = () => {
           <img src={iconLogo} alt="" />
         </div>
         <ul className='elements__content'>
-          <li><Link to="/todo">Войти</Link></li>
-          <li><Link to='/auth'>Зарегистрироваться</Link></li>
+          <li><Link to="/auth">Войти</Link></li>
+          <li><Link to='/registration'>Зарегистрироваться</Link></li>
         </ul>
       </div>
     </div>
