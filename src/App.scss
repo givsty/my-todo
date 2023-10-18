@@ -6,10 +6,12 @@
   font-family: 'Old Standard TT', serif;
   font-family: 'Raleway', sans-serif;
   font-family: 'Roboto', sans-serif;
+
   .element::-webkit-scrollbar {
     width: 0;
   }
-  overflow:hidden ;
+
+  overflow:hidden;
 }
 
 .wrapper {
@@ -34,10 +36,12 @@
 
 .cagegories-list {
   margin: 35px 40px 0;
+
   .skeleton__wrapper {
     margin-bottom: -70px;
     width: 100px
   }
+
   li {
     list-style: none;
     margin-top: 12px;
@@ -76,6 +80,7 @@
   margin-left: 15px;
   cursor: pointer;
   border-radius: 5px;
+
   &:hover {
     color: #adb5bd;
   }
@@ -201,28 +206,34 @@
     display: flex;
     justify-content: space-between;
     margin: 20px;
+
     .nav__logo {
       display: flex;
       justify-content: center;
       align-items: center;
       list-style: none;
+
       img {
         width: 50px;
         height: 50px;
       }
 
     }
+
     .elements__content {
       display: flex;
       justify-content: center;
       align-items: center;
+
       li {
         list-style: none;
         padding: 10px;
         cursor: pointer;
-        :hover{
+
+        :hover {
           font-weight: 700;
         }
+
         a {
           text-decoration: none;
         }
@@ -248,8 +259,10 @@
   justify-content: center;
   flex-direction: column;
   align-items: center;
+
   .auth__content__input {
     margin: 30px;
+
     input {
       outline: none;
       border-radius: 5px;
@@ -259,15 +272,18 @@
       width: 300px;
     }
   }
-  .btn__auth{
+
+  .btn__auth {
     padding-left: 200px;
+
     button {
       cursor: pointer;
       border-radius: 3px;
       border: 0;
       width: 80px;
       height: 25px;
-      &:hover{
+
+      &:hover {
         color: #adb5bd;
       }
     }

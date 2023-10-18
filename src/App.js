@@ -3,8 +3,8 @@ import "./App.scss";
 import Todo from "./components/Todo";
 import Navbar from "./components/ui/Navbar";
 import { Routes, Route } from "react-router-dom";
-import Auth from "./components/Auth";
-import Registration from "./components/Registration";
+import Auth from "./components/Login";
+import Registration from "./components/SignUp";
 import StartPage from "./components/ui/StartPage";
 
 function App() {
