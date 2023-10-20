@@ -1,4 +1,5 @@
 # My first todo app
 # Stack:
-ReactJS
-Sass
+ReactJS,
+Sass,
+Redux
