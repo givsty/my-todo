@@ -1,6 +1,6 @@
 import React from 'react';
 import {getAuth, createUserWithEmailAndPassword} from 'firebase/auth';
-import Form from './ui/Form';
+import Form from '../components/ui/Form';
 const SignUp = () => {
   const handleLogin = (email, password) =>{
     const auth = getAuth()

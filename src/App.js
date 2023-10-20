@@ -3,8 +3,8 @@ import "./App.scss";
 import Todo from "./components/Todo";
 import Navbar from "./components/ui/Navbar";
 import { Routes, Route } from "react-router-dom";
-import Auth from "./components/Login";
-import Registration from "./components/SignUp";
+import Auth from "./pages/Login";
+import Registration from "./pages/SignUp";
 import StartPage from "./components/ui/StartPage";
 
 function App() {
@@ -16,10 +16,10 @@ function App() {
         </header>
       </div>
       <Routes>
-        <Route path="/auth" element={<Auth />}/>
-        <Route path="/registration" element={<Registration />}/>
-        <Route path="/todo" element={<Todo/>}/>
-        <Route path="/my-todo" element={<StartPage/>}/>
+        <Route path="/auth" element={<Auth />} />
+        <Route path="/registration" element={<Registration />} />
+        <Route path="/todo" element={<Todo />} />
+        <Route path="/my-todo" element={<StartPage />} />
       </Routes>
     </>
   );
