@@ -3,6 +3,7 @@ import {getAuth, createUserWithEmailAndPassword} from 'firebase/auth';
 import Form from '../components/ui/Form';
 import { setUser } from '../store/slices/userSlice';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 const SignUp = () => {
   const dispatch = useDispatch
   const handleRegister = (email, password) =>{

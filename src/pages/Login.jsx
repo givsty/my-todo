@@ -3,9 +3,10 @@ import {getAuth, signInWithEmailAndPassword} from 'firebase/auth';
 import Form from '../components/ui/Form';
 import { setUser } from '../store/slices/userSlice';
 import { useDispatch } from 'react-redux';
-
+import { useNavigate } from 'react-router-dom';
 const Login = () => {
   const dispatch = useDispatch
+  const {push} = useNavigate();
   const handleLogin = (email, password) =>{
     const auth = getAuth()
     signInWithEmailAndPassword(auth, email, password)
@@ -16,6 +17,7 @@ const Login = () => {
           id: user.uid,
           token: user.accesToken,
         }))
+        push('/')
       })
       .catch(console.error)
   }
