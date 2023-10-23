@@ -6,6 +6,7 @@ import Modal from "./Modal";
 import SkeletonCategories from "./ui/SkeletonCategories";
 
 const Todo = () => {
+  console.log(process.env);
   const [toggle, setToggle] = useState(0);
   const [categories, setCategories] = useState([]);
   const [todos, setTodos] = useState([]);
@@ -58,7 +59,7 @@ const Todo = () => {
         <div className="categories">
           <ul className="cagegories-list">
             {
-              isLoading ? [...new Array(6)].map(index => <SkeletonCategories />) : categories.map((element, index) => (
+              isLoading ? [...new Array(6)].map(index => <SkeletonCategories key={index}/>) : categories.map((element, index) => (
                 <Categories
                   element={element.name}
                   index={index}
