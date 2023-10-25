@@ -1,12 +1,13 @@
 import React, { useState } from 'react'
 import HomePage from '../../pages/HomePage'
 
-const Form = ({title, handleClick}) => {
+const Form = ({title, handleClick, wrongPassOrLogin}) => {
   const [login, setLogin] = useState('')
   const [password, setPassword] = useState('')
   return (
     <div className="auth__wrapper">
       <div className="auth__content">
+        {wrongPassOrLogin ? <span className='wrongLoginOrPass'>Не верный логин или пароль!</span>: ''}
         <h2>{title === "register" ? 'Зарегистрироваться' : 'Войти'}</h2>
         <div className="auth__content__input">
           <input

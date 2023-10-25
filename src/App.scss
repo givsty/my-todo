@@ -259,7 +259,10 @@
   justify-content: center;
   flex-direction: column;
   align-items: center;
-
+  .wrongLoginOrPass{
+    color: red;
+    font-weight: 700;
+  }
   .auth__content__input {
     margin: 30px;
 
