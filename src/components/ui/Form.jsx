@@ -34,7 +34,7 @@ const Form = ({title, handleClick}) => {
           />
         </div> : ''}
         <div className="btn__auth">
-          <button onClick={()=>handleClick(login, password)}>{title}</button>
+          <button onClick={()=>handleClick(login, password)}>{title === "register" ? 'Подтвердить' : 'Войти'}</button>
         </div>
       </div>
     </div>
