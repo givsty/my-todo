@@ -6,6 +6,7 @@ import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 const SignUp = () => {
   const dispatch = useDispatch
+  const {push} = useNavigate();
   const handleRegister = (email, password) =>{
     const auth = getAuth()
     console.log(auth);
@@ -16,8 +17,9 @@ const SignUp = () => {
           id: user.uid,
           token: user.accesToken,
         }))
+        push('/Todo')
       })
-      .catch(console.error)
+      .catch('/')
   }
   return (
     <Form 

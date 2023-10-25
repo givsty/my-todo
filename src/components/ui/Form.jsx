@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import HomePage from '../../pages/HomePage'
 
 const Form = ({title, handleClick}) => {
   const [login, setLogin] = useState('')
@@ -34,7 +35,9 @@ const Form = ({title, handleClick}) => {
           />
         </div> : ''}
         <div className="btn__auth">
-          <button onClick={()=>handleClick(login, password)}>{title === "register" ? 'Подтвердить' : 'Войти'}</button>
+          <button onClick={()=>{
+            handleClick(login, password)
+          }}>{title === "register" ? 'Подтвердить' : 'Войти'}</button>
         </div>
       </div>
     </div>

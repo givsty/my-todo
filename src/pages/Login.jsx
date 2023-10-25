@@ -17,9 +17,9 @@ const Login = () => {
           id: user.uid,
           token: user.accesToken,
         }))
-        push('/')
+        push('/Todo')
       })
-      .catch(console.error)
+      .catch(() => alert('Invalid user!'))
   }
   return (
     <Form 
