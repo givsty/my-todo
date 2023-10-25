@@ -6,7 +6,7 @@ const Form = ({title, handleClick}) => {
   return (
     <div className="auth__wrapper">
       <div className="auth__content">
-        <h2>Регистрация</h2>
+        <h2>{title === "register" ? 'Зарегистрироваться' : 'Войти'}</h2>
         <div className="auth__content__input">
           <input
             value={login}
@@ -25,14 +25,14 @@ const Form = ({title, handleClick}) => {
             placeholder="Введите пароль"
           />
         </div>
-        <div className="auth__content__input">
+        {title === 'register' ? <div className="auth__content__input">
           <input
             onBlur={()=> ''}
             name="password"
             type="password"
             placeholder="Повторите пароль"
           />
-        </div>
+        </div> : ''}
         <div className="btn__auth">
           <button onClick={()=>handleClick(login, password)}>{title}</button>
         </div>
