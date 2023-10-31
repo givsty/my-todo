@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./App.scss";
 import Todo from "./components/Todo";
 import Navbar from "./components/ui/Navbar";

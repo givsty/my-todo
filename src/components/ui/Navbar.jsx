@@ -1,7 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import iconLogo from '../../assets/img/6194029.png'
 import {Link} from 'react-router-dom'
+import { useAuth } from '../../hooks/use-auth'
+import NavbarList from './NavbarList'
 const Navbar = () => {
+  const {email, isAuth} = useAuth()
   return (
     <div className='nav__wrapper'>
       <div className="elements__wrapper">
@@ -9,8 +12,7 @@ const Navbar = () => {
           <li><Link to="/my-todo"><img src={iconLogo} alt="" /></Link></li>
         </div>
         <ul className='elements__content'>
-          <li><Link to="/auth">Войти</Link></li>
-          <li><Link to='/registration'>Зарегистрироваться</Link></li>
+          {isAuth ? `${email}` : <NavbarList />}
         </ul>
       </div>
     </div>
