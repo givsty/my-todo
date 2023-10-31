@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import {getAuth, signInWithEmailAndPassword} from 'firebase/auth';
-import Form from '../components/ui/Form';
-import { setUser } from '../store/slices/userSlice';
-import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from "react";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import Form from "../components/ui/Form";
+import { setUser } from "../store/slices/userSlice";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 const Login = () => {
   const dispatch = useDispatch();
   const push = useNavigate();
@@ -28,4 +28,4 @@ const Login = () => {
   return <Form title="sign in" handleClick={handleLogin} />;
 };
 
-export default Login
+export default Login;
