@@ -5,29 +5,27 @@ import { setUser } from '../store/slices/userSlice';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 const Login = () => {
-  const [wrongPassOrLogin, setWrongPassOrLogin] = useState(false)
-  const dispatch = useDispatch
-  const {push} = useNavigate();
-  const handleLogin = (email, password) =>{
-    const auth = getAuth()
+  const dispatch = useDispatch();
+  const push = useNavigate();
+
+  const handleLogin = (email, password) => {
+    const auth = getAuth();
     signInWithEmailAndPassword(auth, email, password)
-      .then(({user})=>{
-        dispatch(setUser({
-          email: user.email,
-          id: user.uid,
-          token: user.accesToken,
-        }))
-        push('/Todo')
+      .then(({ user }) => {
+        console.log(user);
+        dispatch(
+          setUser({
+            email: user.email,
+            id: user.uid,
+            token: user.accessToken,
+          })
+        );
+        push("/Todo");
       })
-      .catch(setWrongPassOrLogin(true))
-  }
-  return (
-    <Form 
-      title='login'
-      handleClick={handleLogin}
-      wrongPassOrLogin={wrongPassOrLogin}
-    />
-  )
-}
+      .catch(() => alert("Invalid user!"));
+  };
+
+  return <Form title="sign in" handleClick={handleLogin} />;
+};
 
 export default Login
