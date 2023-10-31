@@ -307,3 +307,11 @@
     }
   }
 }
+
+@media screen and (max-width: 1024px){}
+
+.welcome__content__wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
