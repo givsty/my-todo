@@ -1,8 +1,8 @@
 import React from "react";
 import { redirect } from 'react-router-dom';
-import {useAuth} from '../../hooks/use-auth'
+import {useAuth} from '../hooks/use-auth'
 const StartPage = () => {
-  const {isAuth, email} = useAuth;
+  const {isAuth} = useAuth;
   isAuth ? redirect('/Todo') : redirect('/my-todo')
   return (
     <div className="welcome__wrapper">

@@ -4,9 +4,9 @@ import Categories from "./Categories";
 import Tasks from "./Tasks";
 import Modal from "./Modal";
 import SkeletonCategories from "./ui/SkeletonCategories";
-
+import useLocalStorage from "../hooks/useLocalStorage";
 const Todo = () => {
-  console.log(process.env);
+  const [localTask, setLocalTask] = useLocalStorage([], `task`)
   const [toggle, setToggle] = useState(0);
   const [categories, setCategories] = useState([]);
   const [todos, setTodos] = useState([]);
@@ -27,6 +27,10 @@ const Todo = () => {
         }
       )
   }, [])
+  const addToLocal = (id) =>{
+    const newItem = todos.find(item=> item.id === id)
+    setLocalTask([localTask, newItem])
+  }
   const task = () =>
     setTodos(
       todos.concat([
@@ -82,6 +86,7 @@ const Todo = () => {
               setInput={setInput}
               task={task}
               input={input}
+              addToLocal={addToLocal}
             />
             <div className="categories-content">
               {todos.map((element, index) => {

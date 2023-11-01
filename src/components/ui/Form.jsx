@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import StartPage from './StartPage'
+import StartPage from '../../pages/StartPage'
 
 const Form = ({title, handleClick, wrongPassOrLogin}) => {
   const [login, setLogin] = useState('')

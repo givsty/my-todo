@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import "./App.scss";
 import Todo from "./components/Todo";
 import Navbar from "./components/ui/Navbar";
 import { Routes, Route } from "react-router-dom";
 import Auth from "./pages/Login";
 import Registration from "./pages/SignUp";
-import StartPage from "./components/ui/StartPage";
+import StartPage from "./pages/StartPage";
 
 function App() {
   return (
