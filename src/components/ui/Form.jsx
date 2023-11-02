@@ -1,13 +1,13 @@
 import React, { useState } from 'react'
 import StartPage from '../../pages/StartPage'
-
-const Form = ({title, handleClick, wrongPassOrLogin}) => {
+const Form = ({title, handleClick, wrongValue}) => {
   const [login, setLogin] = useState('')
   const [password, setPassword] = useState('')
+  console.log(wrongValue);
   return (
     <div className="auth__wrapper">
       <div className="auth__content">
-        {wrongPassOrLogin ? <span className='wrongLoginOrPass'>Не верный логин или пароль!</span>: ''}
+        {wrongValue ? <span className='wrongLoginOrPass'>Не верный логин или пароль!</span>: ''}
         <h2>{title === "register" ? 'Зарегистрироваться' : 'Войти'}</h2>
         <div className="auth__content__input">
           <input

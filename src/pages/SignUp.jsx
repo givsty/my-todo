@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import Form from "../components/ui/Form";
 import { setUser } from "../store/slices/userSlice";
@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 const SignUp = () => {
   const dispatch = useDispatch();
   const push = useNavigate();
-
+  const [wrongValue, setWrongValue] = useState(false)
   const handleRegister = (email, password) => {
     const auth = getAuth();
     createUserWithEmailAndPassword(auth, email, password)
@@ -22,7 +22,7 @@ const SignUp = () => {
         );
         push("/Todo");
       })
-      .catch(console.error);
+      .catch(setWrongValue(true));
   };
 
   return <Form title="register" handleClick={handleRegister} />;

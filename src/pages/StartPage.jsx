@@ -9,7 +9,7 @@ const StartPage = () => {
       <div className="welcome__content">
       <h2>Добро пожаловать в приложение "Список дел"</h2>
         <div className="welcome__content__wrapper">
-          Для продолжения нажмите<button>Войти</button>или
+          Для продолжения нажмите <button>Войти</button>или
           <button>Зарегистрироваться</button>
         </div>
       </div>
