@@ -1,5 +1,5 @@
 import React from "react";
-import "./App.scss";
+import "./scss/App.scss";
 import Todo from "./components/Todo";
 import Navbar from "./components/ui/Navbar";
 import { Routes, Route } from "react-router-dom";

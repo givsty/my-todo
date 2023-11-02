@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import Form from "../components/ui/Form";
 import { setUser } from "../store/slices/userSlice";
