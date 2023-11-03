@@ -28,7 +28,7 @@ const Modal = ({ toggle, setToggle, categories, setCategories }) => {
               onClick={() => setToggle(!toggle)}
             />
           </div>
-          <div class="modal-body__content">
+          <div className="modal-body__content">
             <input
               className="modal__input"
               type="text"
