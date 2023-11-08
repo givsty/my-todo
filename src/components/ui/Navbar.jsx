@@ -10,7 +10,7 @@ const Navbar = () => {
     <div className='nav__wrapper'>
       <div className="elements__wrapper">
         <div className="nav__logo">
-          <li><Link to="/my-todo"><img src={iconLogo} alt="" /></Link></li>
+          <li>{!isAuth ? <Link to="/my-todo"><img src={iconLogo} alt="" /></Link> : <Link to="/Todo"><img src={iconLogo} alt="" /></Link>}</li>
         </div>
         <ul className='elements__content'>
           {isAuth ? <NavbarAcitve /> : <NavbarList />}
