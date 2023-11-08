@@ -7,7 +7,7 @@ import SkeletonCategories from "./ui/SkeletonCategories";
 import useLocalStorage from "../hooks/useLocalStorage";
 import { Navigate } from "react-router-dom";
 import { useAuth } from '../hooks//use-auth';
-import {Circle} from 'react-preloaders';
+import Loader, { Circle } from 'react-preloaders'
 const Todo = () => {
   const [localTask, setLocalTask] = useLocalStorage([], `task`)
   const [toggle, setToggle] = useState(0);
@@ -17,7 +17,7 @@ const Todo = () => {
   const [onCategory, setOnCategory] = useState(0);
   const [input, setInput] = useState("");
   const [isLoading, setIsloading] = useState(true)
-  const {isAuth, email} = useAuth();
+  const {isAuth} = useAuth();
   useEffect(() => {
     fetch("https://652ad3c14791d884f1fd67ca.mockapi.io/Todo")
       .then(res => res.json())
