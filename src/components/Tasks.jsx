@@ -1,8 +1,16 @@
 import React from "react";
 import del from "../assets/img/delete.png";
 
-const Tasks = ({todos, setTodos, element}) => {
+const Tasks = ({element, localTask, setLocalTask, todos, setTodos}) => {
   const setActive = (id) => {
+    setLocalTask(
+      localTask.filter((element) => {
+        if (element.id === id) {
+          element.completed = !element.completed;
+        }
+        return localTask;
+      })
+    );
     setTodos(
       todos.filter((element) => {
         if (element.id === id) {
@@ -13,6 +21,7 @@ const Tasks = ({todos, setTodos, element}) => {
     );
   };
   const deleteTask = (id) => {
+    setLocalTask(localTask.filter((element) => element.id !== id));
     setTodos(todos.filter((element) => element.id !== id));
   };
   return (

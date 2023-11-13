@@ -1,38 +1,48 @@
-import React, { useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import Input from "../components/Input";
 import Categories from "./Categories";
 import Tasks from "./Tasks";
 import Modal from "./Modal";
 import SkeletonCategories from "./ui/SkeletonCategories";
-
+import useLocalStorage from "../hooks/useLocalStorage";
+import { Navigate } from "react-router-dom";
+import { useAuth } from "../hooks//use-auth";
 const Todo = () => {
+  const [localTask, setLocalTask] = useLocalStorage([], `task`);
+  const [localCategories, setLocalCategories] = useLocalStorage([], `categories`);
   const [toggle, setToggle] = useState(0);
   const [categories, setCategories] = useState([]);
   const [todos, setTodos] = useState([]);
   const [category, setCategory] = useState(0);
   const [onCategory, setOnCategory] = useState(0);
   const [input, setInput] = useState("");
-  const [isLoading, setIsloading] = useState(true)
+  const [isLoading, setIsloading] = useState(true);
+  const { isAuth } = useAuth();
   useEffect(() => {
     fetch("https://652ad3c14791d884f1fd67ca.mockapi.io/Todo")
-      .then(res => res.json())
+      .then((res) => res.json())
       .then(
         (result) => {
-          setCategories(result)
-          setIsloading(false)
+          setCategories(result);
+          setIsloading(false);
         },
         (error) => {
-          console.log(error)
+          console.log(error);
         }
-      )
-  }, [])
-  const task = () =>
+      );
+  }, []);
+  const addToLocal = (id) => {
+    const newItem = todos.find((item) => item.id === id);
+    setLocalTask([localTask, newItem]);
+  };
+  const task = () => {
     setTodos(
       todos.concat([
         { name: input, completed: false, id: Math.floor(Math.random() * 100) },
       ])
     );
- 
+    setLocalTask(todos);
+  };
   const addTask = (e) => {
     if (e.key === "Enter" && input !== "" && input !== "") {
       task(e);
@@ -40,11 +50,13 @@ const Todo = () => {
     }
   };
 
-  return (
+  return isAuth ? (
     <div className="wrapper">
       <div className="modal__content">
         {toggle ? (
           <Modal
+            setLocalCategories={setLocalCategories}
+            localCategories={localCategories}
             setToggle={setToggle}
             toggle={toggle}
             categories={categories}
@@ -56,23 +68,27 @@ const Todo = () => {
       </div>
       <div className="content">
         <div className="categories">
-          <ul className="cagegories-list">
-            {
-              isLoading ? [...new Array(6)].map(index => <SkeletonCategories />) : categories.map((element, index) => (
-                <Categories
-                  element={element.name}
-                  index={index}
-                  setOnCategory={setOnCategory}
-                  setCategory={setCategory}
-                  category={category}
-                  key={index}
-                />
-              ))
-            }
-            <li style={{ color: "gray" }} onClick={() => setToggle(!toggle)}>
+          <div className="categories-list">
+            <ul className="cagegories-list-dynamic">
+              {isLoading
+                ? [...new Array(5)].map((index) => (
+                    <SkeletonCategories key={index} />
+                  ))
+                : categories.map((element, index) => (
+                    <Categories
+                      element={element.name}
+                      index={index}
+                      setOnCategory={setOnCategory}
+                      setCategory={setCategory}
+                      category={category}
+                      key={index}
+                    />
+                  ))}
+            </ul>
+            <div className='cagegories-list-static'style={{ color: "gray" }} onClick={() => setToggle(!toggle)}>
               +New category
-            </li>
-          </ul>
+            </div>
+          </div>
           <div className="line"></div>
           <div className="categories-header">
             <h2>{onCategory ? onCategory : "All Task"}</h2>
@@ -81,11 +97,14 @@ const Todo = () => {
               setInput={setInput}
               task={task}
               input={input}
+              addToLocal={addToLocal}
             />
             <div className="categories-content">
-              {todos.map((element, index) => {
+              {localTask.map((element, index) => {
                 return (
                   <Tasks
+                    setLocalTask={setLocalTask}
+                    localTask={localTask}
                     key={index}
                     element={element}
                     todos={todos}
@@ -98,6 +117,8 @@ const Todo = () => {
         </div>
       </div>
     </div>
+  ) : (
+    <Navigate to="/my-todo" />
   );
 };
 

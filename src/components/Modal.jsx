@@ -1,14 +1,16 @@
 import React, { useState } from "react";
 import del from "../assets/img/delete.png";
 
-const Modal = ({ toggle, setToggle, categories, setCategories }) => {
+const Modal = ({ toggle, setToggle, categories, setCategories, localCategories, setLocalCategories}) => {
   const [input, setInput] = useState('')
-  const task = () =>
-  setCategories(
-    categories.concat([
-      { name: input, completed: false, id: Math.floor(Math.random() * 100) },
-    ])
-  );
+  const task = () => {
+    setCategories(
+      categories.concat([
+        { name: input, completed: false, id: Math.floor(Math.random() * 100) },
+      ])
+    );
+    setLocalCategories(categories)
+  };
   const addTask = (e) => {
     if (e.key === "Enter" && input !== "" && input !== "") {
       task(e);
@@ -28,7 +30,7 @@ const Modal = ({ toggle, setToggle, categories, setCategories }) => {
               onClick={() => setToggle(!toggle)}
             />
           </div>
-          <div class="modal-body__content">
+          <div className="modal-body__content">
             <input
               className="modal__input"
               type="text"
