@@ -9,6 +9,7 @@ import { Navigate } from "react-router-dom";
 import { useAuth } from "../hooks//use-auth";
 const Todo = () => {
   const [localTask, setLocalTask] = useLocalStorage([], `task`);
+  const [localCategories, setLocalCategories] = useLocalStorage([], `categories`);
   const [toggle, setToggle] = useState(0);
   const [categories, setCategories] = useState([]);
   const [todos, setTodos] = useState([]);
@@ -54,6 +55,8 @@ const Todo = () => {
       <div className="modal__content">
         {toggle ? (
           <Modal
+            setLocalCategories={setLocalCategories}
+            localCategories={localCategories}
             setToggle={setToggle}
             toggle={toggle}
             categories={categories}

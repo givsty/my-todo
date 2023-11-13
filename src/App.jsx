@@ -10,6 +10,7 @@ import { lazy, Suspense } from "react";
 import {Circle} from "react-preloaders";
 const StartPage = lazy(() => import("./pages/StartPage"));
 const Auth = lazy(() => import("./pages/Login"));
+
 function App() {
   return (
     <>
