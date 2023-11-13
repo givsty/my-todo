@@ -34,14 +34,14 @@ const Todo = () => {
     const newItem = todos.find((item) => item.id === id);
     setLocalTask([localTask, newItem]);
   };
-  const task = () =>{
+  const task = () => {
     setTodos(
       todos.concat([
         { name: input, completed: false, id: Math.floor(Math.random() * 100) },
       ])
     );
-    setLocalTask(todos)
-  }
+    setLocalTask(todos);
+  };
   const addTask = (e) => {
     if (e.key === "Enter" && input !== "" && input !== "") {
       task(e);
@@ -65,25 +65,27 @@ const Todo = () => {
       </div>
       <div className="content">
         <div className="categories">
-          <ul className="cagegories-list">
-            {isLoading
-              ? [...new Array(6)].map((index) => (
-                  <SkeletonCategories key={index} />
-                ))
-              : categories.map((element, index) => (
-                  <Categories
-                    element={element.name}
-                    index={index}
-                    setOnCategory={setOnCategory}
-                    setCategory={setCategory}
-                    category={category}
-                    key={index}
-                  />
-                ))}
-            <li style={{ color: "gray" }} onClick={() => setToggle(!toggle)}>
+          <div className="categories-list">
+            <ul className="cagegories-list-dynamic">
+              {isLoading
+                ? [...new Array(5)].map((index) => (
+                    <SkeletonCategories key={index} />
+                  ))
+                : categories.map((element, index) => (
+                    <Categories
+                      element={element.name}
+                      index={index}
+                      setOnCategory={setOnCategory}
+                      setCategory={setCategory}
+                      category={category}
+                      key={index}
+                    />
+                  ))}
+            </ul>
+            <div className='cagegories-list-static'style={{ color: "gray" }} onClick={() => setToggle(!toggle)}>
               +New category
-            </li>
-          </ul>
+            </div>
+          </div>
           <div className="line"></div>
           <div className="categories-header">
             <h2>{onCategory ? onCategory : "All Task"}</h2>
