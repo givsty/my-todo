@@ -7,7 +7,6 @@ import SkeletonCategories from "./ui/SkeletonCategories";
 import useLocalStorage from "../hooks/useLocalStorage";
 import { Navigate } from "react-router-dom";
 import { useAuth } from "../hooks//use-auth";
-import { Lines } from "react-preloaders";
 const Todo = () => {
   const [localTask, setLocalTask] = useLocalStorage([], `task`);
   const [toggle, setToggle] = useState(0);
@@ -35,13 +34,14 @@ const Todo = () => {
     const newItem = todos.find((item) => item.id === id);
     setLocalTask([localTask, newItem]);
   };
-  const task = () =>
+  const task = () =>{
     setTodos(
       todos.concat([
         { name: input, completed: false, id: Math.floor(Math.random() * 100) },
       ])
     );
-
+    setLocalTask(todos)
+  }
   const addTask = (e) => {
     if (e.key === "Enter" && input !== "" && input !== "") {
       task(e);
@@ -95,9 +95,11 @@ const Todo = () => {
               addToLocal={addToLocal}
             />
             <div className="categories-content">
-              {todos.map((element, index) => {
+              {localTask.map((element, index) => {
                 return (
                   <Tasks
+                    setLocalTask={setLocalTask}
+                    localTask={localTask}
                     key={index}
                     element={element}
                     todos={todos}
